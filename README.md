@@ -3,7 +3,7 @@ Encuesta en la Ciudad de México, sobre la violencia de genero, como como un pro
 
 Proyecto Prototipico.
 
-Sitio Web: (Processing 85%)
+Sitio Web: https://datascience509638034.wordpress.com/
 
 Author: Oswaldo Ivann 
 
