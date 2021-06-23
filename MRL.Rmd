@@ -1,0 +1,123 @@
+---
+title: "Regresión Lineal - Violencia de Género"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+## **Mostramos los Datos**
+
+Para este modelo de Regresión Lineal, transformamos varibles categoricas a variables cualitativas, de una encuesta realizada en la Ciudad de México, sobre la violencia de género, la transformacion de este documento se realiza en python.
+
+Cargamos y mostramos, los Datos para este modelo.
+
+
+```{r}
+df <- read.csv('df_vg.csv', encoding = "UTF-8")
+head(df)
+```
+## *Creamos nuestros Modelo de Regresion Lineal*
+
+
+
+### *Definimos las variables X, Y*
+
+Para nuestro Modelo de Regresión Lineal utilizaremos las siguientes como: 
+
+*Variable dependiente:*
+
+Pregunta: ¿Alguna ves has presenciado Violencia de Genero?
+
+Donde: 0 =  No y  1 = Sí.
+
+
+*Variables Independientes:*
+
+Alcaldía: 16 alcaldias de la CDMX de A - Z del 1 - 16.
+
+Beta0: Rellenamos con 1 para nuestra beta 0
+
+¿Por qué motivo crees que se dé la violencia de género?
+
+Todas las Anteriores, Falta de educacion, Costumbre familiar, Falta de cultura, Negligencia por parte de las autoridades, Falta de difusión, Religión, Apariencia física.
+
+
+### *Mostramos la matriz "Y"*
+
+```{r}
+Y <- data.matrix(df[, 2])
+head(Y) 
+```
+
+
+### *Mostramos la matriz "X"*
+
+```{r}
+X <- data.matrix((df[, 3:11]))
+head(X)
+```
+
+
+### *Calculamos la matriz transpuesta e inversa de nuestras variables X*
+
+Hacemos la Matriz transpuestas de X
+
+```{r}
+x <- t(X)%*%X
+print(x)
+```
+
+### *Sacamos la Inversa a la matriz x que transformamos de X.*
+
+```{r}
+inv_x <- solve(x)
+print(inv_x)
+```
+
+### *Sacamos la matriz transpuesta de Y, X; la guardamos en la variable y.*
+
+```{r}
+y <- t(X)%*%Y
+print(y)
+```
+
+
+
+### *Mostramos en una tabla, los valores de Beta de nuestro Modelo, con las nuevas variables x, y.*
+
+```{r}
+beta <- inv_x%*%y
+print(beta)
+```
+
+Mostramos en pantalla nuestras Betas.
+
+```{r}
+cat('El vector estimado Beta 0 = ', beta[1,1],',', ' Beta 1 = ', beta[2,1],',', ' Beta 2 = ', beta[3,1], ',', ' Beta 3 = ', beta[4,1], ',',' Beta 4 = ', beta[5,1], ',', 'Beta 5 = ', beta[6,1],',', 'Beta 6 = ', beta[7,1], 'Beta 7 =', beta[8,1], ',', 'Beta 8 = ', beta[9,1] )
+```
+
+
+
+
+
+## **De otra forma**
+
+
+Creamos la funcion Beta Estimada, con los parametros de un vector y una matriz, 
+
+
+```{r}
+  beta_estimada <- function(matriz, vector){
+beta <- solve(t(matriz)%*%matriz)%*%t(matriz)%*%vector
+return(beta)
+  }
+```
+
+
+
+*Aplicamos a nuestra funcion las Matrices definidas X, Y.*
+
+
+```{r}
+beta_estimada(X, Y)
+```
