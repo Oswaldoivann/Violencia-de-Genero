@@ -1,5 +1,5 @@
 # Violencia-de-Genero
-Encuesta en la Ciudad de México, sobre la violencia de genero, como como un problema social.
+Encuesta en la Ciudad de México, sobre Violencia de Género.
 
 En este espacio encontraras los documentos en codigo python y R para las graficas y el modelo de Regresion Lineal.  
 
