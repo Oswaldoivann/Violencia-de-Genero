@@ -3,6 +3,11 @@ Encuesta en la Ciudad de México, sobre la violencia de genero, como como un pro
 
 En este espacio encontraras el documento en codigo python, de la estructuracion de los datos para realizar las graficas presentadas en el siguiente link.  
 
+* Dashboard
+*  Proyección
+*  Modelo de Regresion lineal (R)
+
+
 Proyecto Prototipico.
 
 Sitio Web: https://datascience509638034.wordpress.com/
